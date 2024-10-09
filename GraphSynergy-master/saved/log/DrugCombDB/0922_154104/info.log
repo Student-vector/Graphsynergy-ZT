@@ -1,0 +1,23 @@
+2022-09-22 15:41:15,408 - train - INFO - GraphSynergy(
+  (protein_embedding): Embedding(15970, 64)
+  (cell_embedding): Embedding(76, 64)
+  (drug_embedding): Embedding(764, 64)
+  (aggregation_function): Linear(in_features=128, out_features=64, bias=True)
+  (combine_function): Linear(in_features=128, out_features=64, bias=False)
+)
+Trainable parameters: 1092288
+2022-09-22 15:41:15,408 - trainer - WARNING - Warning: There's no GPU available on this machine,training will be performed on CPU.
+2022-09-22 15:41:53,857 - trainer - INFO - epoch: 1
+2022-09-22 15:41:53,858 - trainer - INFO -     train          : loss           : 0.80	accuracy       : 0.60	precision      : 0.58	recall         : 0.51	roc_auc        : 0.64	pr_auc         : 0.59	f1_score       : 0.54	
+2022-09-22 15:41:53,859 - trainer - INFO -     validation     : val_loss       : 0.64	val_accuracy   : 0.66	val_precision  : 0.66	val_recall     : 0.54	val_roc_auc    : 0.72	val_pr_auc     : 0.68	val_f1_score   : 0.59	
+2022-09-22 15:41:53,877 - trainer - INFO - Saving current best: model_best.pth ...
+2022-09-22 15:41:53,878 - test - INFO - GraphSynergy(
+  (protein_embedding): Embedding(15970, 64)
+  (cell_embedding): Embedding(76, 64)
+  (drug_embedding): Embedding(764, 64)
+  (aggregation_function): Linear(in_features=128, out_features=64, bias=True)
+  (combine_function): Linear(in_features=128, out_features=64, bias=False)
+)
+Trainable parameters: 1092288
+2022-09-22 15:41:53,878 - test - INFO - Loading checkpoint: saved\models\DrugCombDB\0922_154104\model_best.pth ...
+2022-09-22 15:41:59,433 - test - INFO - {'loss': 0.6365969350985748, 'accuracy': 0.671131273853244, 'precision': 0.672956342375063, 'recall': 0.5593057960570138, 'roc_auc': 0.7271450479765248, 'pr_auc': 0.6943195524591345, 'f1_score': 0.6102848268614531}

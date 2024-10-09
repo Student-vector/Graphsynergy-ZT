@@ -1,0 +1,33 @@
+"Drug1","Drug2","cell","drug1_db","drug2_db","synergy"
+"GPX4i","Ri","ACC-MESO-1","Stu001","Stu002",1
+"GPX4i","MRi","ACC-MESO-1","Stu001","Stu003",1
+"GPX4i","Ri","NCI-H2452","Stu001","Stu002",1
+"GPX4i","MRi","NCI-H2452","Stu001","Stu003",1
+"GPX4i","Ri","NCI-H2052","Stu001","Stu002",1
+"GPX4i","MRi","NCI-H2052","Stu001","Stu003",1
+"GPX4i","Ri","MPP 89","Stu001","Stu002",1
+"GPX4i","MRi","MPP 89","Stu001","Stu003",1
+"GPX4i","Ri","IST-MES2","Stu001","Stu002",1
+"GPX4i","MRi","IST-MES2","Stu001","Stu003",1
+"GPX4i","Ri","MSTO-211H","Stu001","Stu002",1
+"GPX4i","MRi","MSTO-211H","Stu001","Stu003",1
+"GPX4i","Ri","JL-1","Stu001","Stu002",1
+"GPX4i","MRi","JL-1","Stu001","Stu003",1
+"GPX4i","Ri","NCI-H28","Stu001","Stu002",1
+"GPX4i","MRi","NCI-H28","Stu001","Stu003",1
+"GPX4i","Ri","LO68","Stu001","Stu002",1
+"GPX4i","MRi","LO68","Stu001","Stu003",1
+"GPX4i","Ri","Mero-14","Stu001","Stu002",1
+"GPX4i","MRi","Mero-14","Stu001","Stu003",1
+"GPX4i","Ri","Mero-25","Stu001","Stu002",1
+"GPX4i","MRi","Mero-25","Stu001","Stu003",1
+"GPX4i","Ri","Mero-82","Stu001","Stu002",1
+"GPX4i","MRi","Mero-82","Stu001","Stu003",1
+"GPX4i","Ri","Mero-83","Stu001","Stu002",1
+"GPX4i","MRi","Mero-83","Stu001","Stu003",1
+"GPX4i","Ri","Mero-95","Stu001","Stu002",1
+"GPX4i","MRi","Mero-95","Stu001","Stu003",1
+"GPX4i","Ri","NO36","Stu001","Stu002",1
+"GPX4i","MRi","NO36","Stu001","Stu003",1
+"GPX4i","Ri","ONE58","Stu001","Stu002",1
+"GPX4i","MRi","ONE58","Stu001","Stu003",1

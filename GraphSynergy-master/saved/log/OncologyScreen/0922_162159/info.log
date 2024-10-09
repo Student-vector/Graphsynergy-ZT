@@ -1,0 +1,23 @@
+2022-09-22 16:22:09,066 - train - INFO - GraphSynergy(
+  (protein_embedding): Embedding(15970, 32)
+  (cell_embedding): Embedding(29, 32)
+  (drug_embedding): Embedding(21, 32)
+  (aggregation_function): Linear(in_features=64, out_features=32, bias=True)
+  (combine_function): Linear(in_features=64, out_features=32, bias=False)
+)
+Trainable parameters: 516768
+2022-09-22 16:22:09,067 - trainer - WARNING - Warning: There's no GPU available on this machine,training will be performed on CPU.
+2022-09-22 16:22:15,937 - trainer - INFO - epoch: 1
+2022-09-22 16:22:15,937 - trainer - INFO -     train          : loss           : 1.06	accuracy       : 0.54	precision      : 0.60	recall         : 0.51	roc_auc        : 0.56	pr_auc         : 0.60	f1_score       : 0.55	
+2022-09-22 16:22:15,938 - trainer - INFO -     validation     : val_loss       : 0.91	val_accuracy   : 0.57	val_precision  : 0.58	val_recall     : 0.57	val_roc_auc    : 0.62	val_pr_auc     : 0.60	val_f1_score   : 0.57	
+2022-09-22 16:22:15,949 - trainer - INFO - Saving current best: model_best.pth ...
+2022-09-22 16:22:15,949 - test - INFO - GraphSynergy(
+  (protein_embedding): Embedding(15970, 32)
+  (cell_embedding): Embedding(29, 32)
+  (drug_embedding): Embedding(21, 32)
+  (aggregation_function): Linear(in_features=64, out_features=32, bias=True)
+  (combine_function): Linear(in_features=64, out_features=32, bias=False)
+)
+Trainable parameters: 516768
+2022-09-22 16:22:15,950 - test - INFO - Loading checkpoint: saved\models\OncologyScreen\0922_162159\model_best.pth ...
+2022-09-22 16:22:19,057 - test - INFO - {'loss': 0.9077299163013162, 'accuracy': 0.5856287425149701, 'precision': 0.614900180108533, 'recall': 0.5648597214750187, 'roc_auc': 0.6157642478714446, 'pr_auc': 0.6326613374812874, 'f1_score': 0.5860697306558758}

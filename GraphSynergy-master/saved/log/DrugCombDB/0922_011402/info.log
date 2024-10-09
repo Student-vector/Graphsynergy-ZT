@@ -1,0 +1,13 @@
+2022-09-22 01:14:13,140 - train - INFO - GraphSynergy(
+  (protein_embedding): Embedding(15970, 64)
+  (cell_embedding): Embedding(76, 64)
+  (drug_embedding): Embedding(764, 64)
+  (aggregation_function): Linear(in_features=128, out_features=64, bias=True)
+  (combine_function): Linear(in_features=128, out_features=64, bias=False)
+)
+Trainable parameters: 1092288
+2022-09-22 01:14:13,141 - trainer - WARNING - Warning: There's no GPU available on this machine,training will be performed on CPU.
+2022-09-22 01:14:50,105 - trainer - INFO - epoch: 1
+2022-09-22 01:14:50,105 - trainer - INFO -     train          : loss           : 0.78	accuracy       : 0.61	precision      : 0.58	recall         : 0.50	roc_auc        : 0.64	pr_auc         : 0.59	f1_score       : 0.53	
+2022-09-22 01:14:50,110 - trainer - INFO -     validation     : val_loss       : 0.63	val_accuracy   : 0.68	val_precision  : 0.68	val_recall     : 0.55	val_roc_auc    : 0.73	val_pr_auc     : 0.69	val_f1_score   : 0.61	
+2022-09-22 01:14:50,130 - trainer - INFO - Saving current best: model_best.pth ...

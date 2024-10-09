@@ -1,0 +1,36 @@
+setwd('C:\\Users\\tz22f646\\Desktop\\CCLE DepMap, gene expression, Metabolism')
+AUC_inserted=read.csv('CCLE_AUC_inserted.csv',sep = ',',row.names = 1)
+cell_ann=read.csv('sample_info.csv',sep = ',',row.names = 1)
+
+#筛选出MPM细胞系的ferr_inducer AUC value
+meso_index=rownames(AUC_inserted)%in%cell_ann$stripped_cell_line_name[which(cell_ann$Subtype=="Mesothelioma")]
+AUC_meso_Ferro=AUC_inserted[meso_index,c("erastin","X1S.3R.RSL.3","ML162")]
+
+#Heatmap
+AUC_meso_Ferro<-as.matrix(AUC_meso_Ferro)
+
+my_palette <- colorRampPalette(c("white", "red"))
+
+library(gplots) 
+heatmap.2(AUC_meso_Ferro,
+          scale = "column",
+          Colv=T,
+          Rowv=T,
+          dendrogram ="none",
+          trace='none',
+          col=my_palette, 
+          cexRow = 1,
+          cexCol = 1)
+
+Syn_sc=read.csv('C:\\Users\\tz22f646\\Desktop\\用R制作输入Graphsynergy的数据表\\Graph synergy score Meso.txt',sep = '\t',row.names = 1)
+Syn_sc=as.matrix(Syn_sc)
+Syn_sc=t(Syn_sc)
+library(gplots) 
+heatmap.2(Syn_sc,
+          Colv=F,
+          Rowv=T,
+          dendrogram ="none",
+          trace='none',
+          col=my_palette, 
+          cexRow = 2,
+          cexCol = 2)

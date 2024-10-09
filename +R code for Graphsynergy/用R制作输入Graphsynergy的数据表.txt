@@ -1,0 +1,70 @@
+setwd("C:\\Users\\tz22f646\\Desktop\\CCLE DepMap, gene expression, Metabolism\\CCLE_dependency")
+##Dependency data加载####
+dep=read.csv('CRISPR_gene_dependency.csv',sep = ',')
+
+#清洗
+rownames(dep)=dep[,1]
+dep=dep[,-1]
+
+change=function(x){
+  gene=unlist(strsplit(x,"..",fixed = T))[1]
+  return(gene)
+}
+
+col=lapply(colnames(dep),change)
+col=do.call(cbind,col)
+colnames(dep)=col[1,]
+save(dep,cell_ann,file = "dep.RData")
+
+#########筛选出mesothelioma细胞系的gene dependency数据
+load("dep.RData")
+meso_index=rownames(cell_ann)[which(cell_ann$Subtype=="Mesothelioma")]
+meso=dep[intersect(meso_index,rownames(dep)),]
+
+meso_ann=cell_ann[rownames(meso),]
+rownames(meso)=meso_ann[1:16,1]
+                 
+meso["Avg",]=colMeans(meso, na.rm=TRUE)
+meso=as.data.frame(t(meso))
+
+library(rJava)
+library(xlsx)
+ppi=read.delim("C:/Users/tz22f646/Desktop/GCN/GraphSynergy-master/data/DrugCombDB/protein-protein_network.csv",sep=";")
+pro1=unique(ppi[,1])
+pro2=unique(ppi[,2])
+pro=append(pro1, pro2, after = length(pro1))
+pro=unique(pro)
+
+library(clusterProfiler)
+get_cp=function(x){
+  cp_df=as.data.frame(meso[,x])
+  rownames(cp_df)=rownames(meso)
+  cp_other_info=data.frame(source_desc=rep(NA,length(cp_df)),cell=rep(x,length(cp_df)),Tissue=rep("Mesothelioma",length(cp_df)),target_id=rep(-666,length(cp_df)),weight=rep(1,length(cp_df)))
+  cp_df=cbind(cp_df,cp_other_info)
+  cp_df$GeneSym=rownames(cp_df)
+  q=bitr(cp_df$GeneSym,fromType="SYMBOL",toType="ENTREZID",OrgDb="org.Hs.eg.db")
+  colnames(q)[1]<-"GeneSym"
+  colnames(q)[2]<-"protein"
+  cp_df=inner_join(cp_df,q,by="GeneSym")
+  cp_df=cp_df[order(cp_df[,1],decreasing = T),]
+  cp_df=cp_df[1:300,c("GeneSym","source_desc","protein","cell","Tissue","target_id","weight")]
+  rownames(cp_df)=cp_df$protein
+  index=intersect(rownames(cp_df),pro)
+  cp_df=cp_df[as.character(index),]
+  cp_df=cp_df[1:128,]
+  return(cp_df)
+}
+test=get_cp(colnames(meso)[1])
+
+cp_all=lapply(colnames(meso)[1:16],get_cp)
+cp_all=do.call(rbind,cp_all)
+write.csv(cp_all,"C:\\Users\\tz22f646\\Desktop\\cell_protein_meso.csv",row.names = FALSE)
+#导出的cell_protein_meso.csv需要手动去除字符串间的空格
+
+get_dc=function(x){
+  dc_df=data.frame(Drug1=rep("GPX4i",2),Drug2=c("Ri","MRi"),cell=rep(x,2),drug1_db=rep("Stu001",2),drug2_db=c("Stu002","Stu003"),synergy=rep(1,2))
+  return(dc_df)
+}
+dc_all=lapply(colnames(meso)[1:16],get_dc)
+dc_all=do.call(rbind,dc_all)
+write.csv(dc_all,"C:\\Users\\tz22f646\\Desktop\\drug_combinations_meso.csv",row.names = FALSE)
